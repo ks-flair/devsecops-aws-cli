@@ -12,7 +12,7 @@ on:
         default: 'aws-cli'
 
 env:
-  IMAGE_NAME: devsecops-aws-cli  # Set your image name here
+  IMAGE_NAME: ${{ github.event.inputs.image_name || 'devsecops-aws-cli' }}
 
 jobs:
   build-and-deploy:
