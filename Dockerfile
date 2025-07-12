@@ -16,13 +16,13 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
     ./aws/install && \
     rm -rf aws awscliv2.zip
 
-# Create non-root user for security
-# Note: shadow-utils is required for useradd command (minimal package ~1MB)
-RUN useradd -m -s /bin/bash awsuser
+# Create non-root user for security (available for scripts that need it)
+RUN useradd -m -s /bin/bash awsuser && \
+    chown -R awsuser:awsuser /home/awsuser
 
-# Switch to non-root user
-USER awsuser
-WORKDIR /home/awsuser
+# Keep root user for CI pipeline compatibility
+# Scripts can switch to awsuser when needed: sudo -u awsuser command
+WORKDIR /workspace
 
 # Ensure proper shell configuration for CI compatibility
 SHELL ["/bin/bash", "-c"]
