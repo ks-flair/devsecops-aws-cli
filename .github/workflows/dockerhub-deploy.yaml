@@ -18,7 +18,7 @@ jobs:
     steps:
       - name: Set IMAGE_NAME variable with priority (dispatch > repo env > default)
         run: |
-          echo "IMAGE_NAME=${{ github.event.inputs.image_name || env.IMAGE_NAME || 'devsecops-aws-cli' }}" >> $GITHUB_ENV
+          echo "IMAGE_NAME=${{ github.event.inputs.image_name || env.IMAGE_NAME || 'aws-cli' }}" >> $GITHUB_ENV
 
       - name: Show chosen image name
         run: echo "Using image name $IMAGE_NAME"
