@@ -4,6 +4,12 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      image_name:
+        description: 'Docker image name'
+        required: true
+        default: 'aws-cli'
 
 env:
   IMAGE_NAME: devsecops-aws-cli  # Set your image name here
