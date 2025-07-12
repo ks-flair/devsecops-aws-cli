@@ -7,6 +7,7 @@ RUN dnf update -y && dnf install -y \
     jq \
     less \
     bash \
+    git \
     && dnf clean all
 
 # Install AWS CLI v2
@@ -34,7 +35,7 @@ RUN ln -sf /bin/bash /bin/sh && \
     chmod +x /bin/bash /bin/sh
 
 # Copy and setup entrypoint script
-COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY images/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
 # Use the entrypoint script
