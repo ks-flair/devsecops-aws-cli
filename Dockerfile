@@ -1,12 +1,10 @@
 FROM registry.access.redhat.com/ubi8/ubi
 
-# Install dependencies
+# Install basic dependencies
 RUN dnf update -y && dnf install -y \
-    bash \
     curl \
     unzip \
     jq \
-    groff \
     less \
     && dnf clean all
 
