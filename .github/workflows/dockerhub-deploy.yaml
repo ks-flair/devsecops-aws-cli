@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+env:
+  IMAGE_NAME: devsecops-aws-cli  # Set your image name here
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -29,5 +32,5 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/devsecops-aws-cli:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/devsecops-aws-cli:stable
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:stable
