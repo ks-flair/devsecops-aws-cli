@@ -4,6 +4,7 @@ FROM registry.access.redhat.com/ubi8/ubi:latest
 RUN dnf update -y && dnf install -y \
     curl \
     unzip \
+    zip \
     jq \
     less \
     bash \
